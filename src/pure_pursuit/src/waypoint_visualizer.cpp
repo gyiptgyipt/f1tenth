@@ -18,7 +18,7 @@
 #include "visualization_msgs/msg/marker_array.hpp"
 
 WaypointVisualizer::WaypointVisualizer() : Node("waypoint_visualizer_node") {
-    this->declare_parameter("waypoints_path", "/home/zyme/ros_ws/f1tenth/src/f1tenth_ws/racelines/Spielberg_raceline.csv");
+    this->declare_parameter("waypoints_path", "/home/zyme/ros_ws/f1tenth/src/pure_pursuit/racelines/Spielberg_raceline.csv");
     this->declare_parameter("rviz_waypoints_topic", "/waypoints");
 
     waypoints_path = this->get_parameter("waypoints_path").as_string();

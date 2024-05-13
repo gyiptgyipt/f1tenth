@@ -25,7 +25,7 @@
 
 PurePursuit::PurePursuit() : Node("pure_pursuit_node") {
     // initialise parameters
-    this->declare_parameter("waypoints_path", "/home/zyme/ros_ws/f1tenth/src/f1tenth_ws/racelines/Spielberg_raceline.csv");
+    this->declare_parameter("waypoints_path", "/home/zyme/ros_ws/f1tenth/src/pure_pursuit/racelines/Spielberg_raceline.csv");
     this->declare_parameter("odom_topic", "/ego_racecar/odom");
     this->declare_parameter("car_refFrame", "ego_racecar/base_link");
     this->declare_parameter("drive_topic", "/drive");

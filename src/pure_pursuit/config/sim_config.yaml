@@ -1,6 +1,6 @@
 pure_pursuit:
   ros__parameters:
-    waypoints_path: "/home/zyme/ros_ws/f1tenth/src/f1tenth_ws/racelines/Spielberg_raceline.csv"
+    waypoints_path: "/home/zyme/ros_ws/f1tenth/src/pure_pursuit/racelines/Spielberg_raceline.csv"
     odom_topic: "/ego_racecar/odom"
     car_refFrame: "ego_racecar/base_link"
     global_refFrame: "map"
@@ -17,6 +17,6 @@ pure_pursuit:
     steering_limit: 25.0
     velocity_percentage: 1.0 # the limit, can only do 1 lap with clean tires
 
-waypoint_visualizer_node:
+waypoint_visualizer:
   ros__parameters:
-    waypoints_path: "/home/zyme/ros_ws/f1tenth/src/f1tenth_ws/racelines/Spielberg_raceline.csv"
+    waypoints_path: "/home/zyme/ros_ws/f1tenth/src/pure_pursuit/racelines/Spielberg_raceline.csv"

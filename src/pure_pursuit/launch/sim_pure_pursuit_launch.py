@@ -16,14 +16,14 @@ def generate_launch_description():
         package='pure_pursuit',
         executable='pure_pursuit',
         name='pure_pursuit',
-        parameters=[config]
+        # parameters=[config]
     )
 
     waypoint_visualizer_node = Node(
         package='pure_pursuit',
         executable='waypoint_visualizer',
         name='waypoint_visualizer',
-        parameters=[config]
+        # parameters=[config]
     )
 
     # finalize
