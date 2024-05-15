@@ -21,20 +21,20 @@ class WaypointPublisher : public rclcpp::Node {
       timer_ = this->create_wall_timer(2s, std::bind(&WaypointPublisher::timer_callback, this));
 
       //// raceline
-      std::string raceline_file_name = "Spielberg_raceline.csv";
-      std::string raceline_file_loc = get_file_loc(raceline_file_name);
-      RCLCPP_INFO(this->get_logger(), "Raceline file location: %s", raceline_file_loc.c_str());
+      // std::string raceline_file_name = "Spielberg_raceline.csv";
+      // std::string raceline_file_loc = get_file_loc(raceline_file_name);
+      // RCLCPP_INFO(this->get_logger(), "Raceline file location: %s", raceline_file_loc.c_str());
 
-      raceline_path = get_waypoints(raceline_file_loc, raceline_file_name);
-      RCLCPP_INFO(this->get_logger(), "Loaded %d raceline waypoints", (int)raceline_path.poses.size());
+      // raceline_path = get_waypoints(raceline_file_loc, raceline_file_name);
+      // RCLCPP_INFO(this->get_logger(), "Loaded %d raceline waypoints", (int)raceline_path.poses.size());
 
       // centerline
-      // std::string centerline_file_name = "campusmap_path.csv";
-      // std::string centerline_file_loc = get_file_loc(centerline_file_name);
-      // RCLCPP_INFO(this->get_logger(), "Centerline file location: %s", centerline_file_loc.c_str());
+      std::string centerline_file_name = "Spielberg_centerline.csv";
+      std::string centerline_file_loc = get_file_loc(centerline_file_name);
+      RCLCPP_INFO(this->get_logger(), "Centerline file location: %s", centerline_file_loc.c_str());
 
-      // centerline_path = get_waypoints(centerline_file_loc, centerline_file_name);
-      // RCLCPP_INFO(this->get_logger(), "Loaded %d centerline waypoints", (int)centerline_path.poses.size());
+      centerline_path = get_waypoints(centerline_file_loc, centerline_file_name);
+      RCLCPP_INFO(this->get_logger(), "Loaded %d centerline waypoints", (int)centerline_path.poses.size());
 
       //// blend
       //blend_path = blend_paths(raceline_path, centerline_path, 0.6);
