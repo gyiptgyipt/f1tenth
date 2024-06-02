@@ -34,8 +34,8 @@ private:
     double prev_t = 0.0;
     
     // Topics
-    std::string lidarscan_topic = "/scan";
-    std::string drive_topic = "/drive";
+    std::string lidarscan_topic = "/opp_racecar/scan";
+    std::string drive_topic = "/opp_racecar/drive";
 
     /// Create ROS subscribers and publishers
     rclcpp::Publisher<ackermann_msgs::msg::AckermannDriveStamped>::SharedPtr publisher_;
