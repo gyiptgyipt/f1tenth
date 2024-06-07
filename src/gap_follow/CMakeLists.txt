@@ -35,15 +35,12 @@ ament_target_dependencies(reactive_node
   rclcpp geometry_msgs ackermann_msgs nav_msgs sensor_msgs std_msgs
 )
 
-add_executable(gap_the_follow_cpp src/gap_the_follow_cpp.cpp)            #test
-ament_target_dependencies(gap_the_follow_cpp
-  rclcpp geometry_msgs ackermann_msgs nav_msgs sensor_msgs std_msgs
-)
+
 
 # Install Cpp executables
 install(TARGETS
   reactive_node
-  gap_the_follow_cpp
+
   DESTINATION lib/${PROJECT_NAME})
 
 # Install Python modules
@@ -52,7 +49,6 @@ ament_python_install_package(${PROJECT_NAME})
 # Install Python executables
 install(PROGRAMS
   scripts/reactive_node.py
-  scripts/gap_the_follow_cpp.py    #test
   DESTINATION lib/${PROJECT_NAME}
 )
 

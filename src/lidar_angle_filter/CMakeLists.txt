@@ -8,8 +8,7 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
-find_package(sensor REQUIRED)
-find_package(msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -24,11 +23,10 @@ if(BUILD_TESTING)
 endif()
 
 add_executable(lidar_filter src/lidar_filter.cpp)            #test
-ament_target_dependencies(lidar_filter rclcpp geometry_msgs ackermann_msgs nav_msgs sensor_msgs std_msgs)
+ament_target_dependencies(lidar_filter rclcpp sensor_msgs)
 
 
 install(TARGETS
-  reactive_node
   lidar_filter
   DESTINATION lib/${PROJECT_NAME})
 
