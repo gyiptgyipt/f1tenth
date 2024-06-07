@@ -3,7 +3,7 @@ from rclpy.node import Node
 from visualization_msgs.msg import Marker
 from geometry_msgs.msg import Point
 
-from nav_msgs.msg import Path
+from nav_msgs.msg import Odometry,Path
 # from .WaypointHandler import WaypointHandler
 from .WaypointNavigator import WaypointNavigator
 
@@ -14,14 +14,26 @@ class lookAhead(Node):
         self.timer = self.create_timer(1.0, self.timer_callback)
         self.get_logger().info("Look a head Node has been started.")
 
+        self.odom_topic = "/odom"
+        self.subscriber = self.create_subscription(
+            Odometry, self.odom_topic, self.odom_callback, 10
+        )
+
         self.waypoint_topic = "/centerline_waypoints"
         self.waypoint_subscriber = self.create_subscription(
             Path, self.waypoint_topic, self.waypoint_callback, 10
         )
         self.get_logger().info("waiting_for_waypoint")
 
+        self.car_odom = Odometry()
+        self.got_odom = False
+
         self.navigator = WaypointNavigator()
         self.got_waypoints = False
+
+    def odom_callback(self, msg):
+        self.car_odom = msg
+        self.got_odom = True
 
 
     def waypoint_callback(self, msg):
@@ -36,10 +48,11 @@ class lookAhead(Node):
     def timer_callback(self):
 
         #next_waypoint, angle_to_waypoint_world, waypoint_angle, distance_to_waypoint = self.waypoint_handler.get_next_waypoint(car_pos, car_heading_world, lookahead, use_direction)
-        next_waypoint = self.navigator.waypoint_handler.get_next_waypoint(car_pos, car_yaw)
+        next_waypoint,angle,waypoint_angle, distance = self.navigator.waypoint_handler.get_next_waypoint(self.car_odom.pose.pose.position.x, self.car_odom.pose.pose.orientation.z)
+        # distance defalut = 0.06604
 
-        if next_waypoint is None:
-            return (0.0, 0.0) 
+        #next_waypoint = self.navigator.waypoint_handler.update_waypoints(waypoints)
+
 
         marker = Marker()
         marker.header.frame_id = "map"
@@ -50,7 +63,7 @@ class lookAhead(Node):
         marker.action = Marker.ADD
         marker.pose.position.x = next_waypoint.pose.position.x
         marker.pose.position.y = next_waypoint.pose.position.y
-        marker.pose.position.z = next_waypoint.pose.position.z
+        marker.pose.position.z = 0
         
         marker.pose.orientation.x = 0.0
         marker.pose.orientation.y = 0.0
