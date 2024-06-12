@@ -23,7 +23,7 @@ setup(
     entry_points={
         'console_scripts': [
             'waypoint_follow = waypoint_follow.waypoint_follow:main',
-            'lookAhead = waypoint_follow.lookAhead:main',
+            'waypoint_viasualizer = waypoint_follow.waypoint_viasualizer:main',
         ],
     },
 )
