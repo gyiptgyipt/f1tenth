@@ -28,7 +28,7 @@ if(BUILD_TESTING)
 endif()
 
 
-add_executable(next_waypoint_visualizer src/next_waypoint_visualizer.cpp)
+add_executable(next_waypoint_visualizer src/next_point_visualizer.cpp)
 
 ament_target_dependencies(next_waypoint_visualizer
   rclcpp geometry_msgs std_msgs visualization_msgs nav_msgs tf2)
