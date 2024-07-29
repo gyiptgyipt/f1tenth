@@ -27,7 +27,7 @@ bridge:
     scan_beams: 1080
 
     # map parameters
-    map_path: "/home/zyme/ros_ws/f1tenth/src/f1tenth_gym_ros/maps/Spielberg_map" # Levine, Spielberg, Spa, Oschersleben, IMS_map
+    map_path: "/home/zyme/ros_ws/f1tenth/src/f1tenth/src/f1tenth_gym_ros/maps/levine_obs" # Levine, Spielberg, Spa, Oschersleben, IMS_map
     # map_path: "/home/zyme/ros_ws/f1tenth/src/f1tenth_gym_ros/maps/levine_obs"
     map_img_ext: ".png"
 
