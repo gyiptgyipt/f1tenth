@@ -5,6 +5,8 @@
 #include <limits>
 #include <cmath>
 
+#inlcude "vff/pid.cpp"
+
 class VFFPlanner : public rclcpp::Node {
 public:
     VFFPlanner() : Node("vff_node") {
